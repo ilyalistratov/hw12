@@ -11,14 +11,14 @@ services:
   adminer:
     build:
       context: .
+    ports:
+      - 8080:8080
     volumes:
       - type: volume
         source: data_volume
         target: /var/lib/tomcat9/webapps
-    ports:
-      - 8080:8080
     depends_on:
       - db
 
 volumes:
-      data_volume:
+  data_volume:
