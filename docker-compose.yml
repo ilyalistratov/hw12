@@ -6,19 +6,13 @@ services:
     image: mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_USER: ilya
+      MYSQL_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: app42
 
   adminer:
     build:
       context: .
     ports:
       - 8080:8080
-    volumes:
-      - type: volume
-        source: data_volume
-        target: /var/lib/tomcat9/webapps
-    depends_on:
-      - db
-
-volumes:
-  data_volume:
