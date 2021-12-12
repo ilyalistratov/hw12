@@ -9,4 +9,6 @@ RUN mvn package -f hw12/pom.xml
 RUN ls
 RUN mkdir /ddd
 RUN pwd
-RUN cp hw12/target/*.war /var/lib/tomcat9/webapps
+RUN rm -rf /var/lib/tomcat/webapps/*
+RUN cp hw12/target/*.war /var/lib/tomcat9/webapps/ROOT.war
+ADD Config.properties /var/lib/tomcat/ROOT/Config.properties
