@@ -1,25 +1,21 @@
-version: '3.7'
+version: '3.1'
 
 services:
 
-  mvn:
-    build:
-      context: Build/
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: app42
     volumes:
-      - type: volume
-        source: data_volume
-        target: /ddd
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+
   prod:
     build:
-      context: prod/
+      context: .
     ports:
       - "8080:8080"
-    volumes:
-      - type: volume
-        source: data_volume
-        target: /opt/tomcat/webapps
-    depends_on:
-      - mvn
-
-volumes:
-  data_volume:
