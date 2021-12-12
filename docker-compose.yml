@@ -9,7 +9,9 @@ services:
       MYSQL_ROOT_PASSWORD: 12345
 
   adminer:
-    image: adminer
-    restart: always
+    build:
+      context: .
     ports:
       - 8080:8080
+    depends_on:
+      - db
