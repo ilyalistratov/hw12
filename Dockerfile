@@ -8,4 +8,5 @@ RUN git clone https://github.com/ilyalistratov/hw12.git
 RUN mvn package -f hw12/pom.xml
 RUN ls
 RUN mkdir /ddd
-RUN cp target/*.war /ddd
+RUN pwd
+RUN cp hw12/target/*.war /tmp
