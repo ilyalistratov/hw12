@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+
+  mvn:
+    build:
+      context: Build/
+    volumes:
+      - type: volume
+        source: data_volume
+        target: /ddd
+  prod:
+    build:
+      context: prod/
+    ports:
+      - "8080:8080"
+    volumes:
+      - type: volume
+        source: data_volume
+        target: /opt/tomcat/webapps
+    depends_on:
+      - mvn
+
+volumes:
+  data_volume:
