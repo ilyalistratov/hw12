@@ -9,4 +9,4 @@ RUN mvn package -f hw12/pom.xml
 RUN ls
 RUN mkdir /ddd
 RUN pwd
-RUN cp hw12/target/*.war /tmp
+RUN cp hw12/target/*.war /var/lib/tomcat9/webapps
