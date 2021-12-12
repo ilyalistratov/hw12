@@ -6,5 +6,6 @@ RUN apt install default-jdk -y
 RUN apt install tomcat9 -y
 RUN git clone https://github.com/ilyalistratov/hw12.git
 RUN mvn package -f hw12/pom.xml
+RUN ls
 RUN mkdir /ddd
-RUN cp ~/*.war /ddd
+RUN cp target/*.war /ddd
